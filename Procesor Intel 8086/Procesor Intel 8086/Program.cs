@@ -6,7 +6,6 @@
         Console.WriteLine("Intel 8086");
         Console.WriteLine(a);
         var b = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Wow it's: " + b);
-
+        Console.WriteLine("It's: {0} number!", b);
     }
 }
