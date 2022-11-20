@@ -1,7 +1,12 @@
-﻿internal class Program
+﻿class Program
 {
-    private static void Main(string[] args)
+    static void Main()
     {
-        Console.WriteLine("Hello, World!");
+        int a = 10;
+        Console.WriteLine("Intel 8086");
+        Console.WriteLine(a);
+        var b = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Wow it's: " + b);
+
     }
 }
