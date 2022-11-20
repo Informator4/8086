@@ -1,2 +1,2 @@
-# 8086
-Projekt: procesor Intel 8086
+# Projekt: procesor Intel 8086
+To będzie 'symulacja' procesora Intel 8086 w konsoli...
