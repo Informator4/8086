@@ -1,2 +1,2 @@
-# Projekt: procesor Intel 8086
+# Intel 8086 emulator written in C#
 To będzie 'symulacja' procesora Intel 8086 w konsoli...
