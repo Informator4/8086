@@ -1,11 +1,13 @@
-﻿class Program
+﻿using Procesor_Intel_8086;
+
+class Program
 {
     static void Main()
     {
-        int a = 10;
-        Console.WriteLine("Intel 8086");
-        Console.WriteLine(a);
-        var b = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("It's: {0} number!", b);
+        Console.WriteLine("#INTEL 8086 PROJECT# \n");
+        short size = Convert.ToInt16(Console.ReadLine());
+
+        Storage storage = new Storage(size);
+        short mybyte = Convert.ToInt16(Console.ReadLine());
     }
 }
