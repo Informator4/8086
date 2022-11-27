@@ -1,5 +1,4 @@
 ﻿using System;
-using static System.Net.Mime.MediaTypeNames;
 
 public class Program
 {
@@ -26,7 +25,7 @@ public class Program
                 Console.Clear();
                 Console.WriteLine("Commands:\n");
                 Console.WriteLine("Jak w Asemblerze..");
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
             }
             else if (x == 3)
             {
@@ -43,15 +42,15 @@ public class Program
 
         } while (1 < 2);
 
+        // Rejestry
+        short AX = 0;
+        short BX = 0;
+        short CX = 0;
+        short DX = 0;
+
         do
         {
             Console.Clear();
-
-            // Rejestry
-            int AX = 0;
-            int BX = 0;
-            int CX = 0;
-            int DX = 0;
 
             Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", AX, BX, CX, DX);
 
