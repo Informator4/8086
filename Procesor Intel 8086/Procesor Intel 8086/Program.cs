@@ -35,9 +35,8 @@
             else
             {
                 Console.WriteLine("Err");
-                Thread.Sleep(1000);
+                Console.ReadKey();
             }
-
 
         } while (true);
 
