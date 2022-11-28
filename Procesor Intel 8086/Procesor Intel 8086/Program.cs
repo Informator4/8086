@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using static System.Net.Mime.MediaTypeNames;
-
-public class Program
+﻿public class Program
 {
     public static void Main(string[] args)
     {
@@ -27,7 +23,7 @@ public class Program
             {
                 Console.Clear();
                 Console.WriteLine("Commands:\n");
-                Console.WriteLine("Jak w Asemblerze..");
+                Console.WriteLine("There is only 'MOV', 'ADD' commands.\nExample: 'MOV AX, 43'.");
                 Console.ReadKey();
             }
             else if (x == 3)
@@ -49,7 +45,7 @@ public class Program
         {
             Console.Clear();
 
-            string a = "w g x", b;
+            string a;
             short x;
 
             Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", procesor.getAX(), procesor.getBX(), procesor.getCX(), procesor.getDX());
@@ -88,7 +84,7 @@ public class Program
                 else if (!short.TryParse(result[2], out x)) // =-=-=-=-=-=-=-=-=-=-=-=-=
                 {
 
-                    if (result[1] == "AX,") // AX, ... ===
+                    if (result[1] == "AX,") // AX, ... ====
                     {
                         if (result[2] == "AX")
                         {
@@ -119,7 +115,7 @@ public class Program
                             Console.ReadKey();
                         }
                     }
-                    else if (result[1] == "BX,") //BX, ... ===
+                    else if (result[1] == "BX,") //BX, ... ====
                     {
                         if (result[2] == "AX")
                         {
@@ -150,7 +146,7 @@ public class Program
                             Console.ReadKey();
                         }
                     }
-                    else if (result[1] == "CX,") //CX, ... ===
+                    else if (result[1] == "CX,") //CX, ... ====
                     {
                         if (result[2] == "AX")
                         {
@@ -181,7 +177,7 @@ public class Program
                             Console.ReadKey();
                         }
                     }
-                    else if (result[1] == "DX,") //DX, ... ===
+                    else if (result[1] == "DX,") //DX, ... ====
                     {
                         if (result[2] == "AX")
                         {
@@ -226,9 +222,139 @@ public class Program
             }
             else if(result[0] == "ADD") // ADD
             {
-                if (result[1] == "AX,")
+                if (short.TryParse(result[2], out x))
                 {
-                    
+                    if (result[1] == "AX,")
+                    {
+                        procesor.AX += x;
+                    }
+                    else if (result[1] == "BX,")
+                    {
+                        procesor.BX += x;
+                    }
+                    else if (result[1] == "CX,")
+                    {
+                        procesor.CX += x;
+                    }
+                    else if (result[1] == "DX,")
+                    {
+                        procesor.DX += x;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Err");
+                        Console.ReadKey();
+                    }
+                }
+                else if (!short.TryParse(result[2], out x)) // =-=-=-=-=-=-=-=-=-=-=-=-=
+                {
+
+                    if (result[1] == "AX,") // AX, ... ====
+                    {
+                        if (result[2] == "AX")
+                        {
+                            procesor.AX += procesor.AX;
+                        }
+                        else if (result[2] == "BX")
+                        {
+                            procesor.AX += procesor.BX;
+                        }
+                        else if (result[2] == "CX")
+                        {
+                            procesor.AX += procesor.CX;
+                        }
+                        else if (result[2] == "DX")
+                        {
+                            procesor.AX += procesor.DX;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Err");
+                            Console.ReadKey();
+                        }
+                    }
+                    else if (result[1] == "BX,") //BX, ... ====
+                    {
+                        if (result[2] == "AX")
+                        {
+                            procesor.BX += procesor.AX;
+                        }
+                        else if (result[2] == "BX")
+                        {
+                            procesor.BX += procesor.BX;
+                        }
+                        else if (result[2] == "CX")
+                        {
+                            procesor.BX += procesor.CX;
+                        }
+                        else if (result[2] == "DX")
+                        {
+                            procesor.BX += procesor.DX;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Err");
+                            Console.ReadKey();
+                        }
+                    }
+                    else if (result[1] == "CX,") //CX, ... ====
+                    {
+                        if (result[2] == "AX")
+                        {
+                            procesor.CX += procesor.AX;
+                        }
+                        else if (result[2] == "BX")
+                        {
+                            procesor.CX += procesor.BX;
+                        }
+                        else if (result[2] == "CX")
+                        {
+                            procesor.CX += procesor.CX;
+                        }
+                        else if (result[2] == "DX")
+                        {
+                            procesor.CX += procesor.DX;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Err");
+                            Console.ReadKey();
+                        }
+                    }
+                    else if (result[1] == "DX,") //DX, ... ====
+                    {
+                        if (result[2] == "AX")
+                        {
+                            procesor.DX += procesor.AX;
+                        }
+                        else if (result[2] == "BX")
+                        {
+                            procesor.DX += procesor.BX;
+                        }
+                        else if (result[2] == "CX")
+                        {
+                            procesor.DX += procesor.CX;
+                        }
+                        else if (result[2] == "DX")
+                        {
+                            procesor.DX += procesor.DX; ;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Err");
+                            Console.ReadKey();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Err");
+                        Console.ReadKey();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
                 }
             }
             else
