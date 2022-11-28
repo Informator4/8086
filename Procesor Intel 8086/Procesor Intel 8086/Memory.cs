@@ -1,4 +1,4 @@
-﻿public class Memory // 1MB
+﻿public class Memory // MAX 1MB
 {
-
+    // Może coś tu będzie...
 }

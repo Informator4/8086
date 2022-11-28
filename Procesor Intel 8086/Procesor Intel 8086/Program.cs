@@ -48,7 +48,7 @@
             string a;
             short x;
 
-            Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", procesor.getAX(), procesor.getBX(), procesor.getCX(), procesor.getDX());
+            Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", procesor.AX, procesor.BX, procesor.CX, procesor.DX);
             Console.WriteLine("Enter the commend (MOV, ADD):");
 
             a = Console.ReadLine();
