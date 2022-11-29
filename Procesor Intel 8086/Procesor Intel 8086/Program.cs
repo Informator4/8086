@@ -92,21 +92,15 @@
                         }
                         else if (result[2] == "BX")
                         {
-                            short i = procesor.AX;
                             procesor.AX = procesor.BX;
-                            procesor.BX = i;
                         }
                         else if (result[2] == "CX")
                         {
-                            short i = procesor.AX;
                             procesor.AX = procesor.CX;
-                            procesor.CX = i;
                         }
                         else if (result[2] == "DX")
                         {
-                            short i = procesor.AX;
                             procesor.AX = procesor.DX;
-                            procesor.DX = i;
                         }
                         else
                         {
@@ -118,9 +112,7 @@
                     {
                         if (result[2] == "AX")
                         {
-                            short i = procesor.BX;
                             procesor.BX = procesor.AX;
-                            procesor.AX = i;
                         }
                         else if (result[2] == "BX")
                         {
@@ -129,15 +121,11 @@
                         }
                         else if (result[2] == "CX")
                         {
-                            short i = procesor.BX;
                             procesor.BX = procesor.CX;
-                            procesor.CX = i;
                         }
                         else if (result[2] == "DX")
                         {
-                            short i = procesor.BX;
                             procesor.BX = procesor.DX;
-                            procesor.DX = i;
                         }
                         else
                         {
@@ -149,15 +137,11 @@
                     {
                         if (result[2] == "AX")
                         {
-                            short i = procesor.CX;
                             procesor.CX = procesor.AX;
-                            procesor.AX = i;
                         }
                         else if (result[2] == "BX")
                         {
-                            short i = procesor.CX;
                             procesor.CX = procesor.BX;
-                            procesor.BX = i;
                         }
                         else if (result[2] == "CX")
                         {
@@ -166,9 +150,7 @@
                         }
                         else if (result[2] == "DX")
                         {
-                            short i = procesor.CX;
                             procesor.CX = procesor.DX;
-                            procesor.DX = i;
                         }
                         else
                         {
@@ -180,21 +162,15 @@
                     {
                         if (result[2] == "AX")
                         {
-                            short i = procesor.DX;
                             procesor.DX = procesor.AX;
-                            procesor.AX = i;
                         }
                         else if (result[2] == "BX")
                         {
-                            short i = procesor.DX;
                             procesor.DX = procesor.BX;
-                            procesor.BX = i;
                         }
                         else if (result[2] == "CX")
                         {
-                            short i = procesor.DX;
                             procesor.DX = procesor.CX;
-                            procesor.CX = i;
                         }
                         else if (result[2] == "DX")
                         {
