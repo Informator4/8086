@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,8 @@ namespace Procesor_Intel_8086
             return memory.getDX();
         }
 
-        public void MOV(string index1, string index2)
+
+        public void MOV(string index1, string index2) // MOV
         {
             if (short.TryParse(index2, out short x))
             {
@@ -38,6 +40,21 @@ namespace Procesor_Intel_8086
                 changeVariable(index1, index2);
             }
         }
+
+
+        public void ADD(string index1, string index2) // ADD
+        {
+            if (short.TryParse(index2, out short x))
+            {
+                addVariable(index1, x);
+            }
+            else if (!short.TryParse(index2, out x))
+            {
+                addVariable(index1, index2);
+            }
+        }
+
+        // ====== MOV ======
 
         private void changeVariable(string index, short value)
         {
@@ -62,7 +79,6 @@ namespace Procesor_Intel_8086
                 Console.WriteLine("Err");
                 Console.ReadKey();
             }
-
         }
 
         private void changeVariable(string index1, string index2)
@@ -156,6 +172,138 @@ namespace Procesor_Intel_8086
                 else if (index2 == "DX")
                 {
                     memory.setDX(memory.getDX());
+                }
+                else
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Err");
+                Console.ReadKey();
+            }
+        }
+
+        // ====== ADD ======
+
+        private void addVariable(string index, short value)
+        {
+            if (index == "AX,")
+            {
+                memory.setAX((short)(value + memory.getAX()));
+            }
+            else if (index == "BX,")
+            {
+                memory.setBX((short)(value + memory.getBX()));
+            }
+            else if (index == "CX,")
+            {
+                memory.setCX((short)(value + memory.getCX()));
+            }
+            else if (index == "DX,")
+            {
+                memory.setDX((short)(value + memory.getDX()));
+            }
+            else
+            {
+                Console.WriteLine("Err");
+                Console.ReadKey();
+            }
+        }
+
+        private void addVariable(string index1, string index2)
+        {
+            if (index1 == "AX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setAX((short)(memory.getAX() + memory.getAX()));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setAX((short)(memory.getAX() + memory.getBX()));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setAX((short)(memory.getAX() + memory.getCX()));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setAX((short)(memory.getAX() + memory.getDX()));
+                }
+                else
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "BX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setBX((short)(memory.getBX() + memory.getAX()));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setBX((short)(memory.getBX() + memory.getBX()));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setBX((short)(memory.getBX() + memory.getCX()));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setBX((short)(memory.getBX() + memory.getDX()));
+                }
+                else
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "CX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setCX((short)(memory.getCX() + memory.getAX()));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setCX((short)(memory.getCX() + memory.getBX()));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setCX((short)(memory.getCX() + memory.getCX()));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setCX((short)(memory.getCX() + memory.getDX()));
+                }
+                else
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "DX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setDX((short)(memory.getDX() + memory.getAX()));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setDX((short)(memory.getDX() + memory.getBX()));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setDX((short)(memory.getDX() + memory.getCX()));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setDX((short)(memory.getDX() + memory.getDX()));
                 }
                 else
                 {

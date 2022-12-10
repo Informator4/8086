@@ -78,6 +78,18 @@ public class Program
                     procesor.MOV(result[1], result[2]);
                 }
             }
+            else if (result[0] == "ADD") // MOV
+            {
+                if (result[1] == null || result[2] == null)
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    procesor.ADD(result[1], result[2]);
+                }
+            }
             //else if (result[0] == "ADD") // ADD
             //{
             //    if (short.TryParse(result[2], out x))

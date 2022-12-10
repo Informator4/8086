@@ -38,7 +38,9 @@ namespace Procesor_Intel_8086
         {
             return DX;
         }
-        //==============================
+
+        // =================
+
         public void setAX(short AX)
         {
             this.AX = AX;
