@@ -1,10 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        Procesor procesor = new Procesor();
+        Memory memory = new Memory();
         while (true)
         {
             Console.Clear();
@@ -25,14 +26,19 @@ public class Program
             {
                 Console.Clear();
                 Console.WriteLine("Commands:\n");
-                Console.WriteLine("There is only 'MOV', 'ADD', 'SUB', 'INC', 'DEC' commands.\nExample: 'MOV AX, 43'.");
+                Console.WriteLine("Available registers: AX, BX, CX, DX.\nThere is only 'MOV', 'ADD', 'SUB', 'INC', 'DEC' commands.\n\nHow to use:");
+                Console.WriteLine("# MOV:\n* 'MOV [register], [number]' -- register = number\n* 'MOV [register1], [register2]' -- register1 = register2\n");
+                Console.WriteLine("# ADD:\n* 'ADD [register], [number]' -- register = register + number\n* 'ADD [register1], [register2]' -- register1 = register1 + register2\n");
+                Console.WriteLine("# SUB:\n* 'SUB [register], [number]' -- register = register - number\n* 'SUB [register1], [register2]' -- register1 = register1 - register2\n");
+                Console.WriteLine("# INC:\n* 'ADD [register]' -- register = register + 1\n");
+                Console.WriteLine("# DEC:\n* 'ADD [register]' -- register = register - 1\n");
                 Console.ReadKey();
             }
             else if (x == 3)
             {
                 Console.Clear();
                 Console.WriteLine("Goodbye!");
-                System.Environment.Exit(1);
+                Environment.Exit(1);
             }
             else
             {
@@ -49,8 +55,8 @@ public class Program
             string a;
             short x;
 
-            Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", procesor.AX, procesor.BX, procesor.CX, procesor.DX);
-            Console.WriteLine("Enter the commend (MOV, ADD, SUB, INC, DEC):");
+            Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", memory.AX, memory.BX, memory.CX, memory.DX);
+            Console.WriteLine("['reset' - set all to zero]\nEnter the commend (MOV, ADD, SUB, INC, DEC):\n");
 
             a = Console.ReadLine();
             string[] result = a.Split(" ");
@@ -62,19 +68,19 @@ public class Program
                 {
                     if (result[1] == "AX,")
                     {
-                        procesor.AX = x;
+                        memory.AX = x;
                     }
                     else if (result[1] == "BX,")
                     {
-                        procesor.BX = x;
+                        memory.BX = x;
                     }
                     else if (result[1] == "CX,")
                     {
-                        procesor.CX = x;
+                        memory.CX = x;
                     }
                     else if (result[1] == "DX,")
                     {
-                        procesor.DX = x;
+                        memory.DX = x;
                     }
                     else
                     {
@@ -94,15 +100,15 @@ public class Program
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.AX = procesor.BX;
+                            memory.AX = memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.AX = procesor.CX;
+                            memory.AX = memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.AX = procesor.DX;
+                            memory.AX = memory.DX;
                         }
                         else
                         {
@@ -114,7 +120,7 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.BX = procesor.AX;
+                            memory.BX = memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
@@ -123,11 +129,11 @@ public class Program
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.BX = procesor.CX;
+                            memory.BX = memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.BX = procesor.DX;
+                            memory.BX = memory.DX;
                         }
                         else
                         {
@@ -139,11 +145,11 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.CX = procesor.AX;
+                            memory.CX = memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.CX = procesor.BX;
+                            memory.CX = memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
@@ -152,7 +158,7 @@ public class Program
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.CX = procesor.DX;
+                            memory.CX = memory.DX;
                         }
                         else
                         {
@@ -164,15 +170,15 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.DX = procesor.AX;
+                            memory.DX = memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.DX = procesor.BX;
+                            memory.DX = memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.DX = procesor.CX;
+                            memory.DX = memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
@@ -203,19 +209,19 @@ public class Program
                 {
                     if (result[1] == "AX,")
                     {
-                        procesor.AX += x;
+                        memory.AX += x;
                     }
                     else if (result[1] == "BX,")
                     {
-                        procesor.BX += x;
+                        memory.BX += x;
                     }
                     else if (result[1] == "CX,")
                     {
-                        procesor.CX += x;
+                        memory.CX += x;
                     }
                     else if (result[1] == "DX,")
                     {
-                        procesor.DX += x;
+                        memory.DX += x;
                     }
                     else
                     {
@@ -230,19 +236,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.AX += procesor.AX;
+                            memory.AX += memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.AX += procesor.BX;
+                            memory.AX += memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.AX += procesor.CX;
+                            memory.AX += memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.AX += procesor.DX;
+                            memory.AX += memory.DX;
                         }
                         else
                         {
@@ -254,19 +260,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.BX += procesor.AX;
+                            memory.BX += memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.BX += procesor.BX;
+                            memory.BX += memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.BX += procesor.CX;
+                            memory.BX += memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.BX += procesor.DX;
+                            memory.BX += memory.DX;
                         }
                         else
                         {
@@ -278,19 +284,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.CX += procesor.AX;
+                            memory.CX += memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.CX += procesor.BX;
+                            memory.CX += memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.CX += procesor.CX;
+                            memory.CX += memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.CX += procesor.DX;
+                            memory.CX += memory.DX;
                         }
                         else
                         {
@@ -302,19 +308,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.DX += procesor.AX;
+                            memory.DX += memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.DX += procesor.BX;
+                            memory.DX += memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.DX += procesor.CX;
+                            memory.DX += memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.DX += procesor.DX; ;
+                            memory.DX += memory.DX; ;
                         }
                         else
                         {
@@ -340,19 +346,19 @@ public class Program
                 {
                     if (result[1] == "AX,")
                     {
-                        procesor.AX -= x;
+                        memory.AX -= x;
                     }
                     else if (result[1] == "BX,")
                     {
-                        procesor.BX -= x;
+                        memory.BX -= x;
                     }
                     else if (result[1] == "CX,")
                     {
-                        procesor.CX -= x;
+                        memory.CX -= x;
                     }
                     else if (result[1] == "DX,")
                     {
-                        procesor.DX -= x;
+                        memory.DX -= x;
                     }
                     else
                     {
@@ -367,19 +373,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.AX -= procesor.AX;
+                            memory.AX -= memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.AX -= procesor.BX;
+                            memory.AX -= memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.AX -= procesor.CX;
+                            memory.AX -= memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.AX -= procesor.DX;
+                            memory.AX -= memory.DX;
                         }
                         else
                         {
@@ -391,19 +397,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.BX -= procesor.AX;
+                            memory.BX -= memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.BX -= procesor.BX;
+                            memory.BX -= memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.BX -= procesor.CX;
+                            memory.BX -= memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.BX -= procesor.DX;
+                            memory.BX -= memory.DX;
                         }
                         else
                         {
@@ -415,19 +421,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.CX -= procesor.AX;
+                            memory.CX -= memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.CX -= procesor.BX;
+                            memory.CX -= memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.CX -= procesor.CX;
+                            memory.CX -= memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.CX -= procesor.DX;
+                            memory.CX -= memory.DX;
                         }
                         else
                         {
@@ -439,19 +445,19 @@ public class Program
                     {
                         if (result[2] == "AX")
                         {
-                            procesor.DX -= procesor.AX;
+                            memory.DX -= memory.AX;
                         }
                         else if (result[2] == "BX")
                         {
-                            procesor.DX -= procesor.BX;
+                            memory.DX -= memory.BX;
                         }
                         else if (result[2] == "CX")
                         {
-                            procesor.DX -= procesor.CX;
+                            memory.DX -= memory.CX;
                         }
                         else if (result[2] == "DX")
                         {
-                            procesor.DX -= procesor.DX; ;
+                            memory.DX -= memory.DX; ;
                         }
                         else
                         {
@@ -475,19 +481,19 @@ public class Program
             {
                 if (result[1] == "AX")
                 {
-                    procesor.AX++;
+                    memory.AX++;
                 }
                 else if (result[1] == "BX")
                 {
-                    procesor.BX++;
+                    memory.BX++;
                 }
                 else if (result[1] == "CX")
                 {
-                    procesor.CX++;
+                    memory.CX++;
                 }
                 else if (result[1] == "DX")
                 {
-                    procesor.DX++;
+                    memory.DX++;
                 }
                 else
                 {
@@ -499,25 +505,29 @@ public class Program
             {
                 if (result[1] == "AX")
                 {
-                    procesor.AX--;
+                    memory.AX--;
                 }
                 else if (result[1] == "BX")
                 {
-                    procesor.BX--;
+                    memory.BX--;
                 }
                 else if (result[1] == "CX")
                 {
-                    procesor.CX--;
+                    memory.CX--;
                 }
                 else if (result[1] == "DX")
                 {
-                    procesor.DX--;
+                    memory.DX--;
                 }
                 else
                 {
                     Console.WriteLine("Err");
                     Console.ReadKey();
                 }
+            }
+            else if (result[0] == "reset")
+            {
+                memory.resetALL();
             }
             else
             {
