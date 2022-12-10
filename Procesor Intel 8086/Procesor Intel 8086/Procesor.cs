@@ -27,6 +27,10 @@ namespace Procesor_Intel_8086
         {
             return memory.getDX();
         }
+        public void RESET()
+        {
+            memory.resetALL();
+        } 
 
 
         public void MOV(string index1, string index2) // MOV
@@ -71,6 +75,12 @@ namespace Procesor_Intel_8086
         public void INC(string index) // INC
         {
                 incVariable(index);
+        }
+
+
+        public void DEC(string index) // DEC
+        {
+            decVariable(index);
         }
 
 
@@ -489,6 +499,33 @@ namespace Procesor_Intel_8086
             else if (index == "DX")
             {
                 memory.setDX((short)(memory.getDX() + 1));
+            }
+            else
+            {
+                Console.WriteLine("Err");
+                Console.ReadKey();
+            }
+        }
+
+        // ====== DEC ======
+
+        private void decVariable(string index)
+        {
+            if (index == "AX")
+            {
+                memory.setAX((short)(memory.getAX() - 1));
+            }
+            else if (index == "BX")
+            {
+                memory.setBX((short)(memory.getBX() - 1));
+            }
+            else if (index == "CX")
+            {
+                memory.setCX((short)(memory.getCX() - 1));
+            }
+            else if (index == "DX")
+            {
+                memory.setDX((short)(memory.getDX() - 1));
             }
             else
             {

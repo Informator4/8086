@@ -12,7 +12,7 @@ public class Program
             Console.Clear();
 
             Console.WriteLine("INTEL 8086 PROJECT - (c) Mateusz Motyczynski\n");
-            Console.WriteLine("1.Start\n2.Help\n3.Exit\n\nEnter the number (1-3): ");
+            Console.WriteLine("1.Start\n2.Help\n3.Exit\n\nEnter the number (1-3):\n");
 
             int x = Convert.ToInt16(Console.ReadLine());
 
@@ -26,7 +26,6 @@ public class Program
             else if (x == 2)
             {
                 Console.Clear();
-                Console.WriteLine("Commands:\n");
                 Console.WriteLine("Available registers: AX, BX, CX, DX.\nThere is only 'MOV', 'ADD', 'SUB', 'INC', 'DEC' commands.\n\nHow to use:");
                 Console.WriteLine("# MOV:\n* 'MOV [register], [number]' -- register = number\n* 'MOV [register1], [register2]' -- register1 = register2\n");
                 Console.WriteLine("# ADD:\n* 'ADD [register], [number]' -- register = register + number\n* 'ADD [register1], [register2]' -- register1 = register1 + register2\n");
@@ -114,58 +113,22 @@ public class Program
                     procesor.INC(result[1]);
                 }
             }
-            //else if (result[0] == "INC")
-            //{
-            //    if (result[1] == "AX")
-            //    {
-            //        memory.AX++;
-            //    }
-            //    else if (result[1] == "BX")
-            //    {
-            //        memory.BX++;
-            //    }
-            //    else if (result[1] == "CX")
-            //    {
-            //        memory.CX++;
-            //    }
-            //    else if (result[1] == "DX")
-            //    {
-            //        memory.DX++;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Err");
-            //        Console.ReadKey();
-            //    }
-            //}
-            //else if (result[0] == "DEC")
-            //{
-            //    if (result[1] == "AX")
-            //    {
-            //        memory.AX--;
-            //    }
-            //    else if (result[1] == "BX")
-            //    {
-            //        memory.BX--;
-            //    }
-            //    else if (result[1] == "CX")
-            //    {
-            //        memory.CX--;
-            //    }
-            //    else if (result[1] == "DX")
-            //    {
-            //        memory.DX--;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Err");
-            //        Console.ReadKey();
-            //    }
-            //}
-            //else if (result[0] == "reset")
-            //{
-            //    memory.resetALL();
-            //}
+            else if (result[0] == "DEC") // DEC
+            {
+                if (result[1] == null)
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    procesor.DEC(result[1]);
+                }
+            }
+            else if (result[0] == "reset")
+            {
+                procesor.RESET();
+            }
             else
             {
                 Console.WriteLine("Err");
