@@ -78,7 +78,7 @@ public class Program
                     procesor.MOV(result[1], result[2]);
                 }
             }
-            else if (result[0] == "ADD") // MOV
+            else if (result[0] == "ADD") // ADD
             {
                 if (result[1] == null || result[2] == null)
                 {
@@ -90,280 +90,30 @@ public class Program
                     procesor.ADD(result[1], result[2]);
                 }
             }
-            //else if (result[0] == "ADD") // ADD
-            //{
-            //    if (short.TryParse(result[2], out x))
-            //    {
-            //        if (result[1] == "AX,")
-            //        {
-            //            memory.AX += x;
-            //        }
-            //        else if (result[1] == "BX,")
-            //        {
-            //            memory.BX += x;
-            //        }
-            //        else if (result[1] == "CX,")
-            //        {
-            //            memory.CX += x;
-            //        }
-            //        else if (result[1] == "DX,")
-            //        {
-            //            memory.DX += x;
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Err");
-            //            Console.ReadKey();
-            //        }
-            //    }
-            //    else if (!short.TryParse(result[2], out x)) // =-=-=-=-=-=-=-=-=-=-=-=-=
-            //    {
-
-            //        if (result[1] == "AX,") // AX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.AX += memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.AX += memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.AX += memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.AX += memory.DX;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else if (result[1] == "BX,") //BX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.BX += memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.BX += memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.BX += memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.BX += memory.DX;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else if (result[1] == "CX,") //CX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.CX += memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.CX += memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.CX += memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.CX += memory.DX;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else if (result[1] == "DX,") //DX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.DX += memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.DX += memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.DX += memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.DX += memory.DX; ;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Err");
-            //            Console.ReadKey();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Err");
-            //        Console.ReadKey();
-            //    }
-            //}
-            //else if (result[0] == "SUB") // ADD
-            //{
-            //    if (short.TryParse(result[2], out x))
-            //    {
-            //        if (result[1] == "AX,")
-            //        {
-            //            memory.AX -= x;
-            //        }
-            //        else if (result[1] == "BX,")
-            //        {
-            //            memory.BX -= x;
-            //        }
-            //        else if (result[1] == "CX,")
-            //        {
-            //            memory.CX -= x;
-            //        }
-            //        else if (result[1] == "DX,")
-            //        {
-            //            memory.DX -= x;
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Err");
-            //            Console.ReadKey();
-            //        }
-            //    }
-            //    else if (!short.TryParse(result[2], out x)) // =-=-=-=-=-=-=-=-=-=-=-=-=
-            //    {
-
-            //        if (result[1] == "AX,") // AX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.AX -= memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.AX -= memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.AX -= memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.AX -= memory.DX;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else if (result[1] == "BX,") //BX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.BX -= memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.BX -= memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.BX -= memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.BX -= memory.DX;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else if (result[1] == "CX,") //CX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.CX -= memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.CX -= memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.CX -= memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.CX -= memory.DX;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else if (result[1] == "DX,") //DX, ... ====
-            //        {
-            //            if (result[2] == "AX")
-            //            {
-            //                memory.DX -= memory.AX;
-            //            }
-            //            else if (result[2] == "BX")
-            //            {
-            //                memory.DX -= memory.BX;
-            //            }
-            //            else if (result[2] == "CX")
-            //            {
-            //                memory.DX -= memory.CX;
-            //            }
-            //            else if (result[2] == "DX")
-            //            {
-            //                memory.DX -= memory.DX; ;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Err");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Err");
-            //            Console.ReadKey();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Err");
-            //        Console.ReadKey();
-            //    }
-            //}
+            else if (result[0] == "SUB") // SUB
+            {
+                if (result[1] == null || result[2] == null)
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    procesor.SUB(result[1], result[2]);
+                }
+            }
+            else if (result[0] == "INC") // INC
+            {
+                if (result[1] == null)
+                {
+                    Console.WriteLine("Err");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    procesor.INC(result[1]);
+                }
+            }
             //else if (result[0] == "INC")
             //{
             //    if (result[1] == "AX")
@@ -416,11 +166,11 @@ public class Program
             //{
             //    memory.resetALL();
             //}
-            //else
-            //{
-            //    Console.WriteLine("Err");
-            //    Console.ReadKey();
-            //}
+            else
+            {
+                Console.WriteLine("Err");
+                Console.ReadKey();
+            }
         }
     }
 }
