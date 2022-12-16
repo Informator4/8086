@@ -27,6 +27,12 @@ namespace Procesor_Intel_8086
         {
             return memory.getDX();
         }
+
+        public bool getCF()
+        {
+            return memory.getCF();
+        }
+
         public void RESET()
         {
             memory.resetALL();
@@ -55,6 +61,21 @@ namespace Procesor_Intel_8086
             else if (!short.TryParse(index2, out x))
             {
                 addVariable(index1, index2);
+            }
+        }
+
+
+        public void ADC(string index1, string index2) // ADC
+        {
+            if (short.TryParse(index2, out short x))
+            {
+                addVariable(index1, x);
+                memory.setCF(true);
+            }
+            else if (!short.TryParse(index2, out x))
+            {
+                addVariable(index1, index2);
+                memory.setCF(true);
             }
         }
 
@@ -216,7 +237,7 @@ namespace Procesor_Intel_8086
             }
         }
 
-        // ====== ADD ======
+        // ==== ADD/ADC ====
 
         private void addVariable(string index, short value)
         {

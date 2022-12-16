@@ -14,12 +14,19 @@ namespace Procesor_Intel_8086
         private short CX = 0;
         private short DX = 0;
 
+        // Flagi
+        private bool CF = false;
+
+        // =================
+
         public void resetALL()
         {
             AX = 0;
             BX = 0;
             CX = 0;
             DX = 0;
+
+            CF = false;
         }
 
         public short getAX()
@@ -39,6 +46,11 @@ namespace Procesor_Intel_8086
             return DX;
         }
 
+        public bool getCF()
+        {
+            return CF;
+        }
+
         // =================
 
         public void setAX(short AX)
@@ -56,6 +68,11 @@ namespace Procesor_Intel_8086
         public void setDX(short DX)
         {
             this.DX = DX;
+        }
+
+        public void setCF(bool CF)
+        {
+            this.CF = CF;
         }
     }
 }
