@@ -541,8 +541,6 @@ namespace Procesor_Intel_8086
             }
         }
 
-        // ====== SBB ======
-
         private void sbbVariable(string index1, string index2)
         {
             if (index1 == "AX,")
