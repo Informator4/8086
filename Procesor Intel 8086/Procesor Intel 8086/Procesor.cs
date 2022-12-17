@@ -93,9 +93,31 @@ namespace Procesor_Intel_8086
         }
 
 
+        public void SBB(string index1, string index2) // SBB
+        {
+            if (short.TryParse(index2, out short x))
+            {
+                if (memory.getCF())
+                {
+                    x++;
+                    subVariable(index1, x);
+                }
+                else
+                    subVariable(index1, x);
+            }
+            else if (!short.TryParse(index2, out x))
+            {
+                if (memory.getCF())
+                    sbbVariable(index1, index2);
+                else
+                    subVariable(index1, index2);
+            }
+        }
+
+
         public void INC(string index) // INC
         {
-                incVariable(index);
+            incVariable(index);
         }
 
 
@@ -381,7 +403,7 @@ namespace Procesor_Intel_8086
             }
         }
 
-        // ====== SUB ======
+        // ==== SUB/SBB ====
 
         private void subVariable(string index, short value)
         {
@@ -503,6 +525,118 @@ namespace Procesor_Intel_8086
                 else if (index2 == "DX")
                 {
                     memory.setDX((short)(memory.getDX() - memory.getDX()));
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Invalid command...");
+                Console.ReadKey();
+            }
+        }
+
+        // ====== SBB ======
+
+        private void sbbVariable(string index1, string index2)
+        {
+            if (index1 == "AX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setAX((short)(memory.getAX() - memory.getAX() - 1));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setAX((short)(memory.getAX() - memory.getBX() - 1));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setAX((short)(memory.getAX() - memory.getCX() - 1));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setAX((short)(memory.getAX() - memory.getDX() - 1));
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "BX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setBX((short)(memory.getBX() - memory.getAX() - 1));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setBX((short)(memory.getBX() - memory.getBX() - 1));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setBX((short)(memory.getBX() - memory.getCX() - 1));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setBX((short)(memory.getBX() - memory.getDX() - 1));
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "CX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setCX((short)(memory.getCX() - memory.getAX() - 1));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setCX((short)(memory.getCX() - memory.getBX() - 1));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setCX((short)(memory.getCX() - memory.getCX() - 1));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setCX((short)(memory.getCX() - memory.getDX() - 1));
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "DX,")
+            {
+                if (index2 == "AX")
+                {
+                    memory.setDX((short)(memory.getDX() - memory.getAX() - 1));
+                }
+                else if (index2 == "BX")
+                {
+                    memory.setDX((short)(memory.getDX() - memory.getBX() - 1));
+                }
+                else if (index2 == "CX")
+                {
+                    memory.setDX((short)(memory.getDX() - memory.getCX() - 1));
+                }
+                else if (index2 == "DX")
+                {
+                    memory.setDX((short)(memory.getDX() - memory.getDX() - 1));
                 }
                 else
                 {

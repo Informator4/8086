@@ -81,58 +81,88 @@ public class Program
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'MOV [register], [number]' -- register = number");
+        Console.Write("'MOV [register], [number]' -- register = number");
         Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'MOV AX, 4')");
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'MOV [register1], [register2]' -- register1 = register2\n");
+        Console.Write("'MOV [register1], [register2]' -- register1 = register2");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'MOV BX, AX')\n");
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("# ADD:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'ADD [register], [number]' -- register = register + number"); 
+        Console.Write("'ADD [register], [number]' -- register = register + number");
         Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'ADD CX, 87')");
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'ADD [register1], [register2]' -- register1 = register1 + register2\n");
+        Console.Write("'ADD [register1], [register2]' -- register1 = register1 + register2");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'ADD BX, DX')\n");
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("# ADC:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'ADC [register], [number]' -- register = register + number and CF = 1"); 
+        Console.Write("'ADC [register], [number]' -- register = register + number and CF = 1");
         Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'ADC AX, 598')");
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'ADC [register1], [register2]' -- register1 = register1 + register2 and CF = 1\n");
+        Console.Write("'ADC [register1], [register2]' -- register1 = register1 + register2 and CF = 1");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'ADC CX, AX')\n");
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("# SUB:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'SUB [register], [number]' -- register = register - number"); 
+        Console.Write("'SUB [register], [number]' -- register = register - number");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'SUB BX, 8')");
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.Write("'SUB [register1], [register2]' -- register1 = register1 - register2");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'SUB AX, BX')\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# SBB:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'SUB [register1], [register2]' -- register1 = register1 - register2\n");
+        Console.Write("'SBB [register], [number]' -- register = register - number - CF");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'SBB CX, 54')");
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.Write("'SBB [register1], [register2]' -- register1 = register1 - register2 - CF");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'SBB CX, AX')\n");
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("# INC:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'ADD [register]' -- register = register + 1\n");
+        Console.Write("'ADD [register]' -- register = register + 1");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'INC DX')\n");
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("# DEC:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'ADD [register]' -- register = register - 1\n");
+        Console.Write("'ADD [register]' -- register = register - 1");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'DEC AX')");
 
         Console.ReadKey();
     }
@@ -173,7 +203,7 @@ public class Program
             Console.Write("['reset' - set all to zero]\n");
             Console.Write("['return' - return to the previous screen]\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Enter the command (MOV, ADD, ADC, SUB, INC, DEC):\n");
+            Console.WriteLine("Enter the command (MOV, ADD, ADC, SUB, SBB, INC, DEC):\n");
 
             a = Console.ReadLine();
             string[] result = a.Split(" ");
@@ -195,7 +225,6 @@ public class Program
                     Console.ReadKey();
                     continue;
                 }
-
 
                 if (result[0] == "MOV") // MOV
                 {
@@ -248,6 +277,19 @@ public class Program
                     else
                     {
                         procesor.SUB(result[1], result[2]);
+                    }
+                }
+                else if (result[0] == "SBB") // SBB
+                {
+                    if (result[1] == null || result[2] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid command...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        procesor.SBB(result[1], result[2]);
                     }
                 }
                 else
