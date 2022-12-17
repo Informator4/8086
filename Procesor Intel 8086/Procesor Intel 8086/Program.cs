@@ -160,7 +160,7 @@ public class Program
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.Write("'ADD [register]' -- register = register - 1");
+        Console.Write("'DEC [register]' -- register = register - 1");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine(" (e.g: 'DEC AX')");
 
