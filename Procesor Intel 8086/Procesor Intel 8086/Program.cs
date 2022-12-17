@@ -34,34 +34,16 @@ public class Program
 
             if (x == 1)
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Starting...");
-                Thread.Sleep(1000);
+                start();
                 break;
             }
             else if (x == 2)
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Available registers: AX, BX, CX, DX.\nAvailable flags: CF.\nThere is only 'MOV', 'ADD', 'ADC', 'SUB', 'INC', 'DEC' commands.\n\nHow to use:");
-                Console.Write("# MOV:\n* ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("'MOV [register], [number]' -- register = number\n* 'MOV [register1], [register2]' -- register1 = register2\n");
-                Console.WriteLine("# ADD:\n* 'ADD [register], [number]' -- register = register + number\n* 'ADD [register1], [register2]' -- register1 = register1 + register2\n");
-                Console.WriteLine("# ADC:\n* 'ADC [register], [number]' -- register = register + number\n* 'ADC [register1], [register2]' -- register1 = register1 + register2\n");
-                Console.WriteLine("# SUB:\n* 'SUB [register], [number]' -- register = register - number\n* 'SUB [register1], [register2]' -- register1 = register1 - register2\n");
-                Console.WriteLine("# INC:\n* 'ADD [register]' -- register = register + 1\n");
-                Console.WriteLine("# DEC:\n* 'ADD [register]' -- register = register - 1\n");
-                Console.ReadKey();
+                help();
             }
             else if (x == 3)
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Goodbye!");
-                Console.ForegroundColor = ConsoleColor.White;
-                Environment.Exit(1);
+                exit();
             }
             else
             {
@@ -72,7 +54,101 @@ public class Program
         }
     }
 
-    public static void Main(string[] args)
+
+    static void start()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Loading...");
+        Thread.Sleep(1000);
+        Console.WriteLine("Starting...");
+        Thread.Sleep(1000);
+    }
+
+
+    static void help()
+    {
+        Console.Clear();
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Available registers: AX, BX, CX, DX.\nAvailable flags: CF.\nThere is only 'MOV', 'ADD', 'ADC', 'SUB', 'INC', 'DEC' commands.\n");
+
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("How to use:");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# MOV:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'MOV [register], [number]' -- register = number");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'MOV [register1], [register2]' -- register1 = register2\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# ADD:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'ADD [register], [number]' -- register = register + number"); 
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'ADD [register1], [register2]' -- register1 = register1 + register2\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# ADC:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'ADC [register], [number]' -- register = register + number and CF = 1"); 
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'ADC [register1], [register2]' -- register1 = register1 + register2 and CF = 1\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# SUB:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'SUB [register], [number]' -- register = register - number"); 
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'SUB [register1], [register2]' -- register1 = register1 - register2\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# INC:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'ADD [register]' -- register = register + 1\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# DEC:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'ADD [register]' -- register = register - 1\n");
+
+        Console.ReadKey();
+    }
+
+
+    static void exit()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Goodbye!");
+        Console.ForegroundColor = ConsoleColor.White;
+        Environment.Exit(1);
+    }
+
+
+    static void Main(string[] args)
     {
         menu();
 
@@ -97,13 +173,13 @@ public class Program
             Console.Write("['reset' - set all to zero]\n");
             Console.Write("['return' - return to the previous screen]\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Enter the commend (MOV, ADD, ADC, SUB, INC, DEC):\n");
+            Console.WriteLine("Enter the command (MOV, ADD, ADC, SUB, INC, DEC):\n");
 
             a = Console.ReadLine();
             string[] result = a.Split(" ");
 
             // Funkcje
-            if (result.Length == 3)
+            if (result.Length == 3) // 3 czesciowa lista
             {
                 try
                 {
@@ -126,7 +202,7 @@ public class Program
                     if (result[1] == null || result[2] == null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Invalid commend...");
+                        Console.WriteLine("Invalid command...");
                         Console.ReadKey();
 
                     }
@@ -140,7 +216,7 @@ public class Program
                     if (result[1] == null || result[2] == null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Invalid commend...");
+                        Console.WriteLine("Invalid command...");
                         Console.ReadKey();
                     }
                     else
@@ -153,7 +229,7 @@ public class Program
                     if (result[1] == null || result[2] == null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Invalid commend...");
+                        Console.WriteLine("Invalid command...");
                         Console.ReadKey();
                     }
                     else
@@ -166,7 +242,7 @@ public class Program
                     if (result[1] == null || result[2] == null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Invalid commend...");
+                        Console.WriteLine("Invalid command...");
                         Console.ReadKey();
                     }
                     else
@@ -174,12 +250,18 @@ public class Program
                         procesor.SUB(result[1], result[2]);
                     }
                 }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
             }
             else if (result.Length == 2)
             {
                 try
                 {
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 2; i++) // 2 czesciowa lista
                     {
                         a = result[i]; // ... Ważne, że działa :)
                     }
@@ -197,7 +279,7 @@ public class Program
                     if (result[1] == null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Invalid commend...");
+                        Console.WriteLine("Invalid command...");
                         Console.ReadKey();
                     }
                     else
@@ -210,13 +292,19 @@ public class Program
                     if (result[1] == null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Invalid commend...");
+                        Console.WriteLine("Invalid command...");
                         Console.ReadKey();
                     }
                     else
                     {
                         procesor.DEC(result[1]);
                     }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
                 }
             }
             else if (result.Length == 1)
@@ -232,14 +320,14 @@ public class Program
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }

@@ -128,7 +128,7 @@ namespace Procesor_Intel_8086
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -156,7 +156,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -181,7 +181,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -206,7 +206,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -231,14 +231,14 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -266,7 +266,7 @@ namespace Procesor_Intel_8086
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -294,7 +294,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -319,7 +319,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -344,7 +344,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -369,14 +369,14 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -404,7 +404,7 @@ namespace Procesor_Intel_8086
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -432,7 +432,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -457,7 +457,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -482,7 +482,7 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
@@ -507,14 +507,14 @@ namespace Procesor_Intel_8086
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Invalid commend...");
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
                 }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -542,7 +542,7 @@ namespace Procesor_Intel_8086
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
@@ -570,7 +570,7 @@ namespace Procesor_Intel_8086
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid commend...");
+                Console.WriteLine("Invalid command...");
                 Console.ReadKey();
             }
         }
