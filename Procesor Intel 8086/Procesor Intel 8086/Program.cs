@@ -18,11 +18,24 @@ public class Program
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Enter the number (1-3):\n");
 
-            int x = Convert.ToInt16(Console.ReadLine());
+            int x;
+
+            try
+            {
+                x = Convert.ToInt16(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Invalid input...");
+                Console.ReadKey();
+                continue;
+            }
 
             if (x == 1)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Starting...");
                 Thread.Sleep(1000);
                 break;
@@ -30,8 +43,11 @@ public class Program
             else if (x == 2)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Available registers: AX, BX, CX, DX.\nAvailable flags: CF.\nThere is only 'MOV', 'ADD', 'ADC', 'SUB', 'INC', 'DEC' commands.\n\nHow to use:");
-                Console.WriteLine("# MOV:\n* 'MOV [register], [number]' -- register = number\n* 'MOV [register1], [register2]' -- register1 = register2\n");
+                Console.Write("# MOV:\n* ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("'MOV [register], [number]' -- register = number\n* 'MOV [register1], [register2]' -- register1 = register2\n");
                 Console.WriteLine("# ADD:\n* 'ADD [register], [number]' -- register = register + number\n* 'ADD [register1], [register2]' -- register1 = register1 + register2\n");
                 Console.WriteLine("# ADC:\n* 'ADC [register], [number]' -- register = register + number\n* 'ADC [register1], [register2]' -- register1 = register1 + register2\n");
                 Console.WriteLine("# SUB:\n* 'SUB [register], [number]' -- register = register - number\n* 'SUB [register1], [register2]' -- register1 = register1 - register2\n");
@@ -50,10 +66,9 @@ public class Program
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Err");
+                Console.WriteLine("Invalid input...");
                 Console.ReadKey();
             }
-
         }
     }
 
@@ -87,108 +102,144 @@ public class Program
             a = Console.ReadLine();
             string[] result = a.Split(" ");
 
-            try
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    a = result[i]; // Proszę nie pytać... Ważne, że działa :)
-                }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                Console.ForegroundColor= ConsoleColor.DarkRed;
-                Console.WriteLine("Invalid command");
-                Console.ReadKey();
-                continue;
-            }
-
             // Funkcje
-            if (result[0] == "MOV") // MOV
+            if (result.Length == 3)
             {
-                if (result[1] == null || result[2] == null)
+                try
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Err");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        a = result[i]; // ... Ważne, że działa :)
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
                     Console.ReadKey();
+                    continue;
+                }
 
+
+                if (result[0] == "MOV") // MOV
+                {
+                    if (result[1] == null || result[2] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid commend...");
+                        Console.ReadKey();
+
+                    }
+                    else
+                    {
+                        procesor.MOV(result[1], result[2]);
+                    }
+                }
+                else if (result[0] == "ADD") // ADD
+                {
+                    if (result[1] == null || result[2] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid commend...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        procesor.ADD(result[1], result[2]);
+                    }
+                }
+                else if (result[0] == "ADC") // ADC
+                {
+                    if (result[1] == null || result[2] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid commend...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        procesor.ADC(result[1], result[2]);
+                    }
+                }
+                else if (result[0] == "SUB") // SUB
+                {
+                    if (result[1] == null || result[2] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid commend...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        procesor.SUB(result[1], result[2]);
+                    }
+                }
+            }
+            else if (result.Length == 2)
+            {
+                try
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        a = result[i]; // ... Ważne, że działa :)
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                if (result[0] == "INC") // INC
+                {
+                    if (result[1] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid commend...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        procesor.INC(result[1]);
+                    }
+                }
+                else if (result[0] == "DEC") // DEC
+                {
+                    if (result[1] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid commend...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        procesor.DEC(result[1]);
+                    }
+                }
+            }
+            else if (result.Length == 1)
+            {
+                if (result[0] == "reset") // reset
+                {
+                    procesor.RESET();
+                }
+                else if (result[0] == "return") // reset
+                {
+                    menu();
                 }
                 else
                 {
-                    procesor.MOV(result[1], result[2]);
-                }
-            }
-            else if (result[0] == "ADD") // ADD
-            {
-                if (result[1] == null || result[2] == null)
-                {
-                    Console.WriteLine("Err");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid commend...");
                     Console.ReadKey();
                 }
-                else
-                {
-                    procesor.ADD(result[1], result[2]);
-                }
-            }
-            else if (result[0] == "ADC") // ADC
-            {
-                if (result[1] == null || result[2] == null)
-                {
-                    Console.WriteLine("Err");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    procesor.ADC(result[1], result[2]);
-                }
-            }
-            else if (result[0] == "SUB") // SUB
-            {
-                if (result[1] == null || result[2] == null)
-                {
-                    Console.WriteLine("Err");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    procesor.SUB(result[1], result[2]);
-                }
-            }
-            else if (result[0] == "INC") // INC
-            {
-                if (result[1] == null)
-                {
-                    Console.WriteLine("Err");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    procesor.INC(result[1]);
-                }
-            }
-            else if (result[0] == "DEC") // DEC
-            {
-                if (result[1] == null)
-                {
-                    Console.WriteLine("Err");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    procesor.DEC(result[1]);
-                }
-            }
-            else if (result[0] == "reset") // reset
-            {
-                procesor.RESET();
-            }
-            else if (result[0] == "return") // reset
-            {
-                menu();
             }
             else
             {
-                Console.WriteLine("Err");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Invalid commend...");
                 Console.ReadKey();
             }
         }
