@@ -19,7 +19,7 @@ public class Program
             Console.WriteLine("Enter the number (1-3):\n");
 
             int x;
-
+            
             try
             {
                 x = Convert.ToInt16(Console.ReadLine());
@@ -188,8 +188,6 @@ public class Program
         {
             Console.Clear();
 
-            string a;
-
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("AX: {0}\nBX: {1}\nCX: {2}\nDX: {3}\n", procesor.getAX(), procesor.getBX(), procesor.getCX(), procesor.getDX());
             Console.Write("CF: ");
@@ -205,6 +203,7 @@ public class Program
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Enter the command (MOV, ADD, ADC, SUB, SBB, INC, DEC):\n");
 
+            string a;
             a = Console.ReadLine();
             string[] result = a.Split(" ");
 
