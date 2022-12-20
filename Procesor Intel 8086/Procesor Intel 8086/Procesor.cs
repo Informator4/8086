@@ -132,6 +132,17 @@ namespace Procesor_Intel_8086
             decVariable(index);
         }
 
+        public void CLC() // CLC
+        {
+            memory.setCF(false);
+        }
+
+
+        public void STC() // STC
+        {
+            memory.setCF(true);
+        }
+
 
         // ====== MOV ======
 

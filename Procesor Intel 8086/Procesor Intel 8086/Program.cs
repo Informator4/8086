@@ -171,7 +171,21 @@ public class Program
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.Write("'DEC [register]' -- register = register - 1");
         Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine(" (e.g: 'DEC AX')");
+        Console.WriteLine(" (e.g: 'DEC AX')\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# CLC:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'CLC' -- CF = 0\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# STC:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("'STC' -- CF = 1");
 
         Console.ReadKey();
     }
@@ -208,9 +222,10 @@ public class Program
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("['reset' - set all to zero]\n");
+            Console.Write("['help' - command patterns]\n");
             Console.Write("['return' - return to the previous screen]\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Enter the command (MOV, XCHG, ADD, ADC, SUB, SBB, INC, DEC):\n");
+            Console.WriteLine("Enter the command (MOV, XCHG, ADD, ADC, SUB, SBB, INC, DEC, CLC, STC):\n");
 
             string a;
             a = Console.ReadLine();
@@ -223,7 +238,7 @@ public class Program
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        a = result[i]; // ... Ważne, że działa :)
+                        a = result[i];
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -373,9 +388,21 @@ public class Program
             }
             else if (result.Length == 1)
             {
-                if (result[0] == "reset") // reset
+                if (result[0] == "CLC") // CLC
+                {
+                    procesor.CLC();
+                }
+                else if (result[0] == "STC") // STC
+                {
+                    procesor.STC();
+                }
+                else if (result[0] == "reset") // reset
                 {
                     procesor.RESET();
+                }
+                else if (result[0] == "help") // reset
+                {
+                    help();
                 }
                 else if (result[0] == "return") // reset
                 {
