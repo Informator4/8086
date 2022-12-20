@@ -52,6 +52,12 @@ namespace Procesor_Intel_8086
         }
 
 
+        public void XCHG(string index1, string index2) // XCHG
+        {
+                XchangeVariable(index1, index2);
+        }
+
+
         public void ADD(string index1, string index2) // ADD
         {
             if (short.TryParse(index2, out short x))
@@ -249,6 +255,150 @@ namespace Procesor_Intel_8086
                 else if (index2 == "DX")
                 {
                     memory.setDX(memory.getDX());
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Invalid command...");
+                Console.ReadKey();
+            }
+        }
+
+        // ====== XCHG =====
+
+        private void XchangeVariable(string index1, string index2)
+        {
+            if (index1 == "AX,")
+            {
+                if (index2 == "AX")
+                {
+                    short x = memory.getAX();
+                    memory.setAX(memory.getAX());
+                    memory.setAX(x);
+                }
+                else if (index2 == "BX")
+                {
+                    short x = memory.getAX();
+                    memory.setAX(memory.getBX());
+                    memory.setBX(x);
+                }
+                else if (index2 == "CX")
+                {
+                    short x = memory.getAX();
+                    memory.setAX(memory.getCX());
+                    memory.setCX(x);
+                }
+                else if (index2 == "DX")
+                {
+                    short x = memory.getAX();
+                    memory.setAX(memory.getDX());
+                    memory.setDX(x);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "BX,")
+            {
+                if (index2 == "AX")
+                {
+                    short x = memory.getBX();
+                    memory.setBX(memory.getAX());
+                    memory.setAX(x);
+                }
+                else if (index2 == "BX")
+                {
+                    short x = memory.getBX();
+                    memory.setBX(memory.getBX());
+                    memory.setBX(x);
+                }
+                else if (index2 == "CX")
+                {
+                    short x = memory.getBX();
+                    memory.setBX(memory.getCX());
+                    memory.setCX(x);
+                }
+                else if (index2 == "DX")
+                {
+                    short x = memory.getBX();
+                    memory.setBX(memory.getDX());
+                    memory.setDX(x);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "CX,")
+            {
+                if (index2 == "AX")
+                {
+                    short x = memory.getCX();
+                    memory.setCX(memory.getAX());
+                    memory.setAX(x);
+                }
+                else if (index2 == "BX")
+                {
+                    short x = memory.getCX();
+                    memory.setCX(memory.getBX());
+                    memory.setBX(x);
+                }
+                else if (index2 == "CX")
+                {
+                    short x = memory.getCX();
+                    memory.setCX(memory.getCX());
+                    memory.setCX(x);
+                }
+                else if (index2 == "DX")
+                {
+                    short x = memory.getCX();
+                    memory.setCX(memory.getDX());
+                    memory.setDX(x);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Invalid command...");
+                    Console.ReadKey();
+                }
+            }
+            else if (index1 == "DX,")
+            {
+                if (index2 == "AX")
+                {
+                    short x = memory.getDX();
+                    memory.setDX(memory.getAX());
+                    memory.setAX(x);
+                }
+                else if (index2 == "BX")
+                {
+                    short x = memory.getDX();
+                    memory.setDX(memory.getBX());
+                    memory.setBX(x);
+                }
+                else if (index2 == "CX")
+                {
+                    short x = memory.getDX();
+                    memory.setDX(memory.getCX());
+                    memory.setCX(x);
+                }
+                else if (index2 == "DX")
+                {
+                    short x = memory.getDX();
+                    memory.setDX(memory.getDX());
+                    memory.setDX(x);
                 }
                 else
                 {

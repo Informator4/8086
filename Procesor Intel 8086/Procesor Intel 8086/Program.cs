@@ -91,6 +91,15 @@ public class Program
         Console.WriteLine(" (e.g: 'MOV BX, AX')\n");
 
         Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("# XCHG:");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("* ");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.Write("'XCHG [register1], [register2]' -- register1 < - > register2");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(" (e.g: 'XCHG CX, BX')\n");
+
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("# ADD:");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
@@ -201,7 +210,7 @@ public class Program
             Console.Write("['reset' - set all to zero]\n");
             Console.Write("['return' - return to the previous screen]\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Enter the command (MOV, ADD, ADC, SUB, SBB, INC, DEC):\n");
+            Console.WriteLine("Enter the command (MOV, XCHG, ADD, ADC, SUB, SBB, INC, DEC):\n");
 
             string a;
             a = Console.ReadLine();
@@ -237,6 +246,20 @@ public class Program
                     else
                     {
                         procesor.MOV(result[1], result[2]);
+                    }
+                }
+                else if (result[0] == "XCHG") // XCHG
+                {
+                    if (result[1] == null || result[2] == null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid command...");
+                        Console.ReadKey();
+
+                    }
+                    else
+                    {
+                        procesor.XCHG(result[1], result[2]);
                     }
                 }
                 else if (result[0] == "ADD") // ADD
