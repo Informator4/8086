@@ -408,6 +408,16 @@ public class Program
                 }
                 else if (result[0] == "return") // reset
                 {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Saving.");
+                    Thread.Sleep(500);
+                    Console.Clear();
+                    Console.WriteLine("Saving..");
+                    Thread.Sleep(500);
+                    Console.Clear();
+                    Console.WriteLine("Saving...");
+                    Thread.Sleep(500);
                     menu();
                 }
                 else
