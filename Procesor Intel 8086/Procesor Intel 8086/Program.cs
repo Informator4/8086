@@ -71,7 +71,7 @@ public class Program
         Console.Clear();
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Available registers: AX, BX, CX, DX.\nAvailable flags: CF.\nThere is only 'MOV', 'ADD', 'ADC', 'SUB', 'INC', 'DEC' commands.\n");
+        Console.WriteLine("Available registers: AX, BX, CX, DX.\nAvailable flags: CF.\nThere is only 'MOV', 'XCHG', 'ADD', 'ADC', 'SUB', 'SBB', 'INC', 'DEC', 'CLC', 'STC' commands.\n");
 
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine("How to use:");
@@ -185,8 +185,10 @@ public class Program
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("* ");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("'STC' -- CF = 1");
+        Console.WriteLine("'STC' -- CF = 1\n");
 
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Press any key on your keyboard to return to previous screen...");
         Console.ReadKey();
     }
 
